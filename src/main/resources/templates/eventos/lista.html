@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo} + ' - Registro de Eventos'">Lista de Eventos</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+    <div th:replace="~{layout :: header}"></div>
+
+    <main class="container">
+        <h2>Lista de Eventos (Thymeleaf)</h2>
+        
+        <div th:if="${mensaje}" class="alert alert-success">
+            <span th:text="${mensaje}"></span>
+        </div>
+
+        <div class="actions">
+            <a th:href="@{/eventos/nueva}" class="btn btn-primary">Nuevo Evento</a>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Lugar</th>
+                    <th>Descripción</th>
+                    <th>Capacidad</th>
+                    <th>Tipo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="evento : ${eventos}">
+                    <td th:text="${evento.id}">1</td>
+                    <td th:text="${evento.nombre}">Conferencia de IA</td>
+                    <td th:text="${#dates.format(evento.fecha, 'dd/MM/yyyy')}">25/07/2025</td>
+                    <td th:text="${evento.lugar}">Auditorio Principal</td>
+                    <td th:text="${evento.descripcion}">Descripción del evento</td>
+                    <td th:text="${evento.capacidad}">100</td>
+                    <td th:text="${evento.tipoEvento}">Conferencia</td>
+                    <td>
+                        <a th:href="@{/eventos/editar/{id}(id=${evento.id})}" class="btn btn-sm btn-secondary">Editar</a>
+                        <a th:href="@{/eventos/eliminar/{id}(id=${evento.id})}" 
+                           class="btn btn-sm btn-danger"
+                           onclick="return confirm('¿Está seguro de eliminar este evento?')">Eliminar</a>
+                    </td>
+                </tr>
+                <tr th:if="${#lists.isEmpty(eventos)}">
+                    <td colspan="8" class="text-center">No hay eventos registrados</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <div th:replace="~{layout :: footer}"></div>
+</body>
+</html>

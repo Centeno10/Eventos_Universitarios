@@ -1,0 +1,577 @@
+/* Estilos generales */
+:root {
+    /* Paleta de colores*/
+    --primary-color: #468ab1; 
+    --primary-dark: #4a84a5;  /* Azul más oscuro para hover */
+    --secondary-color: #55bcc4; 
+    --secondary-color: #3a9298; 
+    --secondary-dark: #486f72; 
+    --danger-color: #e74c3c;  
+    --danger-dark: #c0392b;   
+    --dark-heading: #414a78;  /* Azul muy oscuro para encabezados */
+    --text-color: #333;       /* Color de texto general */
+    --light-bg: #f8f9fa;      /* Fondo de elementos ligeros */
+    --body-bg: #f5f5f5;       /* Fondo de la página */
+    --border-color: #ddd;     /* Color de borde para inputs y tablas */
+    --shadow-light: rgba(0,0,0,0.08); /* Sombra ligera */
+    --shadow-medium: rgba(0,0,0,0.15); /* Sombra media para hover */
+
+    /* Espaciado */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+
+    /* Bordes y radios */
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; 
+    line-height: 1.7; /* Ligeramente más espacio entre líneas */
+    color: var(--text-color);
+    background-color: var(--body-bg);
+}
+
+/* Contenedor */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg); /* Aumento de padding horizontal */
+}
+
+/* Header y navegación */
+header {
+    background-color: var(--dark-heading);
+    color: white;
+    padding: var(--spacing-sm) 0; /* Padding ajustado */
+    box-shadow: 0 4px 8px var(--shadow-light); /* Sombra más definida */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+header .container {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width: 100%;
+}
+
+header h1 {
+    font-size: 2rem; /* Tamaño de fuente un poco más grande para el título */
+    margin-bottom: var(--spacing-xs);
+    font-weight: 700; 
+    color: white; 
+    letter-spacing: 0.05em; /* Ligeramente más espaciado entre letras */
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* Pequeña sombra para el título */
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: center; 
+    margin-top: var(--spacing-sm); /* Espacio superior para la navegación */
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem var(--spacing-lg); 
+    border-radius: var(--border-radius-sm);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; 
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    position: relative;
+}
+
+nav a:after { 
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; /* Grosor de la línea */
+    background-color: #697dd9; 
+    transform: scaleX(0); 
+    transform-origin: bottom center; 
+    transition: transform 0.3s ease-out;
+}
+
+nav a:hover:after {
+    transform: scaleX(1); 
+}
+
+nav a:hover {
+    background-color: #6774b1; 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+nav a.active {
+    background-color: var(--primary-color); 
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-medium);
+    font-weight: 700; 
+}
+
+nav a.active:after {
+    transform: scaleX(1); 
+    background-color: var(--secondary-color);
+}
+
+/* Main content */
+main {
+    min-height: calc(100vh - 200px);
+    padding: var(--spacing-xl) 0;
+}
+
+h2 {
+    color: var(--dark-heading);
+    margin-bottom: var(--spacing-lg); /* Más espacio inferior */
+    font-size: 2rem; /* Encabezado más prominente */
+    text-align: center; /* Centrar encabezados principales */
+}
+
+/* Alertas */
+.alert {
+    padding: var(--spacing-sm) var(--spacing-md); 
+    margin-bottom: var(--spacing-md); 
+    border-radius: var(--border-radius-sm);
+    border: 1px solid transparent; /* Bordes transparentes por defecto */
+    font-weight: 500;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md); 
+    margin: var(--spacing-xs);
+    border: none;
+    border-radius: var(--border-radius-sm);
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transición suave */
+    font-weight: 600; /* Botones más robustos */
+    box-shadow: 0 2px 4px var(--shadow-light); /* Sombra en los botones */
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+.btn-danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: var(--danger-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-medium);
+}
+
+.btn-sm {
+    padding: 0.35rem 0.7rem; /* Ajuste para botones pequeños */
+    font-size: 0.875rem;
+}
+
+/* Acciones */
+.actions {
+    margin-bottom: var(--spacing-xl); /* Más espacio antes de la tabla/contenido */
+    display: flex; /* Para alinear botones */
+    gap: var(--spacing-sm);
+    flex-wrap: wrap; /* Permite que los botones se envuelvan en pantallas pequeñas */
+}
+
+/* Tabla */
+.table {
+    width: 100%;
+    background-color: white;
+    border-collapse: separate; /* Para border-radius */
+    border-spacing: 0; /* Para border-radius */
+    box-shadow: 0 4px 12px var(--shadow-light); /* Sombra más pronunciada */
+    overflow: hidden;
+    border-radius: var(--border-radius-md); /* Borde redondeado para la tabla */
+    margin-bottom: var(--spacing-xl); /* Espacio al final de la tabla */
+}
+
+.table th,
+.table td {
+    padding: var(--spacing-md); 
+    text-align: left;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+.table th {
+    background-color: var(--dark-heading);
+    color: white;
+    font-weight: 600; 
+    text-transform: uppercase; /* Encabezados en mayúsculas */
+    letter-spacing: 0.05em; /* Espaciado entre letras */
+}
+
+.table tbody tr:nth-child(even) { /* Filas alternas */
+    background-color: var(--light-bg);
+}
+
+.table tbody tr:hover {
+    background-color: #e9ecef; 
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Formulario */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600; 
+    color: var(--dark-heading);
+    font-size: 0.95rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem var(--spacing-sm); 
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+}
+
+.form-actions {
+    margin-top: var(--spacing-lg);
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: flex-end; 
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6); /* Fondo más oscuro para el modal */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0; /* Oculto por defecto */
+    visibility: hidden; /* Oculto para accesibilidad */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal.show { /* Clase para mostrar el modal con animación */
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: white;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    max-width: 650px; /* Un poco más ancho */
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Sombra más grande para el modal */
+    transform: translateY(-20px); /* Efecto de entrada */
+    transition: transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
+.modal-content h3 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--dark-heading);
+    font-size: 1.7rem;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    background-color: var(--dark-heading);
+    color: white;
+    text-align: center;
+    padding: var(--spacing-md) 0;
+    margin-top: var(--spacing-xl);
+    font-size: 0.9rem;
+}
+
+/* Página de inicio */
+.hero {
+    background: linear-gradient(135deg, white 0%, #e0f2f7 100%); /* Degradado suave */
+    padding: var(--spacing-xl) var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 6px 15px var(--shadow-light);
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    margin-top: var(--spacing-lg);
+}
+
+.hero h1 {
+    color: var(--dark-heading);
+    font-size: 2.8rem; /* Título más grande */
+    margin-bottom: var(--spacing-md);
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #555;
+    max-width: 700px;
+    margin: 0 auto;
+    margin-bottom: var(--spacing-lg);
+}
+
+.demo-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--spacing-lg); /* Espacio entre tarjetas */
+    margin-top: var(--spacing-xl);
+}
+
+.demo-card {
+    background-color: white;
+    padding: var(--spacing-xl);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 12px var(--shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Para organizar el contenido internamente */
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.demo-card:hover {
+    transform: translateY(-8px); /* Mayor efecto al hover */
+    box-shadow: 0 8px 20px var(--shadow-medium);
+}
+
+.demo-card h3 {
+    color: var(--dark-heading);
+    margin-bottom: var(--spacing-sm);
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.demo-card p {
+    color: #666;
+    margin-bottom: var(--spacing-md);
+    flex-grow: 1; /* Para que el párrafo ocupe el espacio disponible */
+}
+
+.demo-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin: 0 var(--spacing-sm) var(--spacing-md) 0;
+}
+
+.demo-card ul li {
+    background-color: #ecf0f1;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--border-radius-sm);
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    display: inline-block; /* Para que los ítems estén en la misma línea si hay espacio */
+    margin-right: 0.5rem;
+    color: #555;
+}
+
+/* Información técnica en index.html */
+.info-section {
+    margin-top: var(--spacing-xl);
+    background-color: #ecf0f1;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 2px 8px var(--shadow-light);
+    border-left: 5px solid var(--primary-color); /* Toque de color */
+}
+
+.info-section h2 {
+    text-align: left;
+    margin-bottom: var(--spacing-md);
+    color: var(--dark-heading);
+    font-size: 1.8rem;
+}
+
+.info-section p {
+    margin-bottom: var(--spacing-xs);
+}
+
+.info-section ul {
+    list-style: disc; /* Vuelven los puntos de la lista */
+    padding-left: var(--spacing-lg);
+    margin: var(--spacing-sm) 0;
+}
+
+.info-section ul li {
+    margin-bottom: 0.5rem;
+    font-family: 'Courier New', Courier, monospace; /* Fuente monoespaciada para código */
+    background-color: rgba(0,0,0,0.05); /* Fondo suave para los elementos de lista */
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--border-radius-sm);
+    display: inline-block;
+    margin-right: var(--spacing-sm);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+    .demo-cards {
+        grid-template-columns: 1fr; /* Una columna en pantallas medianas */
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+    header {
+        padding: var(--spacing-sm) 0;
+    }
+    header h1 {
+        font-size: 1.5rem; /* Ajuste para móviles */
+    }
+    nav ul {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        align-items: center;
+        margin-top: var(--spacing-sm);
+    }
+    nav a {
+        padding: 0.4rem var(--spacing-sm); /* Ajuste de padding para móviles */
+        font-size: 0.9rem;
+    }
+    nav ul {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+        align-items: center; /* Centrar elementos en columna */
+    }
+    nav a {
+        padding: 0.4rem var(--spacing-sm);
+    }
+    h2 {
+        font-size: 1.8rem;
+    }
+    .table {
+        font-size: 0.875rem;
+        border-radius: var(--border-radius-sm); /* Reducir border-radius en móviles */
+    }
+    .table th,
+    .table td {
+        padding: var(--spacing-sm);
+    }
+    .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
+    .btn-sm {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.75rem;
+    }
+    .modal-content {
+        padding: var(--spacing-md);
+    }
+    .modal-content h3 {
+        font-size: 1.5rem;
+    }
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .info-section h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .actions {
+        flex-direction: column; /* Apilar botones en pantallas muy pequeñas */
+        align-items: center;
+    }
+    .btn {
+        width: 100%; /* Botones de acción ocupan todo el ancho */
+        margin: 0.5rem 0;
+    }
+    .table {
+        display: block;
+        overflow-x: auto; /* Permitir scroll horizontal en tablas */
+        white-space: nowrap; /* Evitar que el contenido de la tabla se rompa */
+    }
+    .form-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    .form-actions .btn {
+        width: 100%;
+    }
+}

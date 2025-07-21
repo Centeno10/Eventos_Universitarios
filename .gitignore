@@ -1,0 +1,46 @@
+# Archivos y carpetas generadas por Maven
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Archivos generados por el IDE (ej: IntelliJ IDEA, Eclipse)
+.idea/
+.classpath
+.project
+.settings/
+.metadata
+*.iml
+*.ipr
+*.iws
+
+# Archivos de log
+*.log
+
+# Archivos temporales
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.DS_Store # Mac OS X
+Thumbs.db # Windows
+
+# Archivos de Spring Boot
+!**/src/main/**/resources/static/** # Excluir todo en static excepto lo que no debe ignorarse
+!**/src/main/**/resources/templates/** # Excluir todo en templates
+!**/src/main/**/resources/application*.properties
+!**/src/main/**/resources/application*.yml
+
+# Archivos de compilación de Gradle (si usaras Gradle en vez de Maven, pero bueno tenerlo)
+build/
+.gradle/
+
+# Archivos de compilación de Docker (que no deben estar en Git)
+Dockerfile.orig
+*.dockerignore

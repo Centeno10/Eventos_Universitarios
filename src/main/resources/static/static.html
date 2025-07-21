@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Eventos - HTML/JS</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <h1>Sistema de Registro de Eventos Universitarios</h1>
+                <ul>
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/eventos">Thymeleaf (MVC)</a></li>
+                    <li><a href="/static.html" class="active">HTML/JS (API REST)</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h2>Lista de Eventos (HTML/JS + API REST)</h2>
+        
+        <div id="mensaje" class="alert" style="display: none;"></div>
+
+        <div class="actions">
+            <button class="btn btn-primary" onclick="mostrarFormulario()">Nuevo Evento</button>
+            <button class="btn btn-secondary" onclick="cargarEventos()">Recargar Lista</button>
+        </div>
+
+        <table class="table" id="tablaEventos">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Lugar</th>
+                    <th>Descripción</th>
+                    <th>Capacidad</th>
+                    <th>Tipo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="listaEventos">
+                <tr>
+                    <td colspan="9" class="text-center">Cargando...</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div id="modalFormulario" class="modal"> 
+            <div class="modal-content">
+                <h3 id="tituloFormulario">Nuevo Evento</h3>
+                <form id="formularioEvento" onsubmit="guardarEvento(event)">
+                    <input type="hidden" id="eventoId">
+                    
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha">Fecha:</label>
+                        <input type="date" id="fecha" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lugar">Lugar:</label>
+                        <input type="text" id="lugar" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <textarea id="descripcion" class="form-control"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="capacidad">Capacidad:</label>
+                        <input type="number" id="capacidad" class="form-control" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tipoEvento">Tipo de Evento:</label>
+                        <select id="tipoEvento" class="form-control" required>
+                            <option value="">Seleccione...</option>
+                            <option value="Conferencia">Conferencia</option>
+                            <option value="Taller">Taller</option>
+                            <option value="Seminario">Seminario</option>
+                            <option value="Charla">Charla</option>
+                            <option value="Feria">Feria</option>
+                            <option value="Congreso">Congreso</option>
+                        </select>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button type="button" class="btn btn-secondary" onclick="cerrarFormulario()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Universidad Tecnológica del Perú - Registro de Eventos Universitarios</p>
+        </div>
+    </footer>
+
+    <script src="/js/app.js"></script>
+</body>
+</html>

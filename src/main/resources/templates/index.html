@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${titulo} + ' - Registro de Eventos'">Inicio</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div th:replace="~{layout :: header}"></div>
+
+    <main class="container">
+        <div class="hero">
+            <h1>Bienvenido al Sistema de Registro de Eventos Universitarios</h1>
+            <p>Registra y visualiza los eventos puestos de manera muy sencilla y eficiente</p> <a th:href="@{/eventos}" class="btn btn-primary">Empezar ahora</a> </div>
+
+        <div class="demo-cards">
+            <div class="demo-card">
+                <h3>Opción 1: Thymeleaf (MVC)</h3>
+                <p>Utiliza el patrón MVC tradicional con renderizado del lado del servidor usando Thymeleaf como motor de plantillas.</p>
+                <ul>
+                    <li>Renderizado en el servidor</li>
+                    <li>Páginas HTML dinámicas</li>
+                    <li>Formularios tradicionales</li>
+                    <li>Navegación con recargas de página</li>
+                </ul>
+                <a th:href="@{/eventos}" class="btn btn-primary">Ver Demo Thymeleaf</a>
+            </div>
+
+            <div class="demo-card">
+                <h3>Opción 2: HTML/JS + API REST</h3>
+                <p>Utiliza HTML estático con JavaScript para consumir la API REST, siguiendo el patrón SPA (Single Page Application).</p>
+                <ul>
+                    <li>Renderizado en el cliente</li>
+                    <li>Consumo de API REST</li>
+                    <li>Actualización dinámica sin recargas</li>
+                    <li>JavaScript con Fetch API</li>
+                </ul>
+                <a th:href="@{/static.html}" class="btn btn-primary">Ver Demo API REST</a>
+            </div>
+        </div>
+
+        <div class="info-section"> <h2>Información técnica</h2>
+            <p><strong>Endpoints disponibles:</strong></p>
+            <ul>
+                <li><strong>Vista Thymeleaf:</strong> <code>/eventos</code> (Controlador MVC)</li>
+                <li><strong>Vista HTML/JS:</strong> <code>/static.html</code> (Archivo estático)</li>
+                <li><strong>API REST:</strong> <code>/api/eventos</code> (JSON)</li>
+                <li><strong>Base de datos H2:</strong> <code>/h2-console</code></li>
+            </ul>
+            <p><strong>Puerto del servidor:</strong> 8080</p>
+        </div>
+    </main>
+
+    <div th:replace="~{layout :: footer}"></div>
+</body>
+</html>
